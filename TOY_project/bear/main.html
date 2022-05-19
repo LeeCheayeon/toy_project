@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <div id ="emptybox" ></div><!--상단 빈박스-->
+    <nav>
+      <ul id= "menu">
+        <!-- <li>기본</li>
+        <li>눈</li>
+        <li>코/입</li>
+        <li>눈썹</li>
+        <li>의상</li>
+        <li>하의</li>
+        <li>손</li>
+        <li>발</li>
+        <li>장식1</li>
+        <li>장식2</li>
+        <li>배경</li> -->
+      </ul> <!--메뉴박스-->
+      <div id = "submenu"> <!-- 그리드영역-->
+        <div class="sub" data-sub="1"></div>
+        <div class="sub" data-sub="2"></div>
+        <div class="sub" data-sub="3"></div>
+        <div class="sub" data-sub="4"></div>
+        <div class="sub" data-sub="5"></div>
+        <div class="sub" data-sub="6"></div>
+        <div class="sub" data-sub="7"></div>
+        <div class="sub" data-sub="8"></div>
+        <div class="sub" data-sub="9"></div>
+        <div class="sub" data-sub="10"></div>
+        <div class="sub" data-sub="11"></div>
+        <div class="sub" data-sub="12"></div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id = "button">
+      <div></div><!--뒤로가기-->
+      <div></div><!--앞으로-->
+    </section>
+    <section><!--이미지-->
+      <div class="head"><img src="images/red-02.svg"></img></div>
+      <div><img src="images/base-01.svg"></img></div>
+    </section>
+  </main>
+</body>
+
+<script>
+  const menu = document.querySelector("#menu");
+  console.dir(menu.style);
+  // 메뉴 가로 스클롤 없애볼까?? 다른 인터렉션 방법 생각 
+
+  const submenu = document.getElementById("submenu");
+  const submenus =document.getElementsByClassName("sub")
+  console.log(submenus);
+  console.dir(submenus);
+  console.log(submenus[0].dataset.sub); // :1
+  // console.dir(submenu);
+
+  submenu.addEventListener("click", function(event){
+    let getdataset = event.target.dataset.sub;
+    console.log(getdataset);
+
+    let isStatus = true;
+    for(let i =0; i <submenus.length; i++){
+      if(isStatus === true){
+        //만약 참이라면
+        if(submenus[i].dataset.sub === getdataset){
+          console.log("click");
+          submenus[i].style.backgroundColor="#ff6666";
+          isStatus = false;
+          console.log(isStatus);
+        }
+        
+      }else{
+        //참이 아니라면 
+        if(submenus[i].dataset.sub === getdataset){
+          console.log("unclick");
+          submenu[i].style.backgroundColor = "#333";
+          isStatus = true;
+          console.log(isStatus);
+        }
+      }
+    }
+  });
+
+
+  // 메뉴 생성하기 
+  let menuArr = ["기본", "눈", "코/입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"]
+  function creatMenu (){
+    const newMenu =document.createElement('li');
+    const newMeText = document.createTextNode(menuArr);
+    newMenu.appendChild(newMeText);
+    menu.appendChild(newMenu);
+  }
+</script>
+</html>

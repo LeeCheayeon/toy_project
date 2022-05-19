@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="menu"></ul>
+  <div id = "submenu"></div>
+  <script>
+    const menu = document.querySelector("#menu");
+    console.dir(menu);
+    const submenu = document.querySelector("#submenu");
+    console.dir(submenu);
+
+    let menuArr = ["기본", "눈", "코/입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"]
+    
+    function creatMenu (){
+      // 메뉴 생성을 하는 함수
+      for(let i =0; i<menuArr.length; i++){
+        const newMenu =document.createElement('li');
+        const newMeText = document.createTextNode(menuArr[i]);
+        newMenu.appendChild(newMeText);
+        menu.appendChild(newMenu);
+      };
+    };
+
+    creatMenu();
+
+
+    // 메뉴를 하나 누르면(click) 선택한 메뉴의 창이 새롭게 나오도록??
+    // 위와 같이 새로운 appendchild를 사용하면 된다고 하셨다
+    function createElement(){
+      const newElement = document.createElement("div");
+      submenu.appendChild(newElement);
+    }
+
+    let isStatus = true;
+    menu.addEventListener("click", function(){
+      if(isStatus === true){
+        createElement();
+        console.log("click");
+        // true 일때만 생성 
+        if(submenu.childElementCount === menuArr.length){
+          console.log("그만 생성해줘.");
+          isStatus = false;
+          // false일때 생성 종료
+        }
+      }
+    });
+
+    // 일단 11개만 생성이 가능하도록 바꿨음.
+    // 여기서 이제 생성한 박스안에 새로운 것을 넣고 (1)
+    // 다른 버튼을 누르면 그전에 생성된 박스를 삭제하고 새로운 박스를 만들어줘?
+    
+  </script>
+</body>
+</html>

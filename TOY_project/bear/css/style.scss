@@ -1,0 +1,133 @@
+*{margin: 0; padding: 0;}
+
+$color-1:#fff;
+$color-2:#c4c4c4;
+$color-3:#656565;
+$color-4:#333;
+
+@mixin flex($flex-j, $flex-a, $flex-d){
+  display: flex;
+  justify-content: $flex-j;
+  align-items: $flex-a;
+  flex-direction:$flex-d;
+}
+
+@mixin text($text-c, $text-s, $text-w) {
+  color: $text-c;
+  font-size: $text-s;
+  font-weight: $text-w;
+}
+
+@mixin box($Width, $height,$back-C) {
+  width: $Width;
+  height: $height;
+  background-color: $back-C;
+}
+
+body {
+  @include box(100vw, 100vh, none);
+}
+
+#emptybox{
+  @include box(100vw, 4.5vh, $color-2);
+  position: fixed;
+  top: 0;
+}
+header{
+  &>nav{
+    border: 1px solid red;
+
+    width: 100vw;
+    height: 40vh;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+
+#menu {
+  width: 100vw;
+  height: 5vh;
+  background-color: #c4c4c4;
+  list-style-type: none;
+
+  // overflow-x: scroll;
+
+  display: grid;
+  grid-template-rows: (1, 100vw);
+  grid-template-columns: repeat(11, 20vw);
+  grid-gap: 1vw;
+
+  &>li{
+    width: 20vw;
+    text-align: center;
+    padding-top: 1vh;
+  }
+}
+// #menu::-webkit-scrollbar{
+//   width: 100vw;
+//   background-color: none;
+// }
+
+#button{
+  width: 100vw;
+  height: 5vh;
+  background-color: #fff;
+}
+main{
+  width: 100vw;
+  height: 55vh;
+  background-color: #fff;
+  position: fixed;
+  top: 4.5vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &>section:nth-child(2){
+    width: inherit;
+    height: 50vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // flex-direction: column;
+    &>div:nth-child(2){
+      width: 283px;
+      height: 355px;
+      // background-color: #fff;
+      position: absolute;
+      z-index: 0;
+    }
+  }
+}
+
+.head{
+  width: 283px;
+  height: 155px;
+
+  position: relative;
+  z-index: 2;
+  top: -10vh;
+  left: 0vw;
+}
+
+#submenu {
+  width: inherit;
+  height: 35vh;
+  display: grid;
+  grid-template-rows: (5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+
+  &>div{
+    margin: 2vw;
+    background-color: #c4c4c4;
+    border-radius: 2vw;
+  }
+}

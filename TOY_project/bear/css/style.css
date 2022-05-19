@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: none;
+}
+
+#emptybox {
+  width: 100vw;
+  height: 4.5vh;
+  background-color: #c4c4c4;
+  position: fixed;
+  top: 0;
+}
+
+header > nav {
+  border: 1px solid red;
+  width: 100vw;
+  height: 40vh;
+  position: fixed;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#menu {
+  width: 100vw;
+  height: 5vh;
+  background-color: #c4c4c4;
+  list-style-type: none;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1, 100vw;
+      grid-template-rows: 1, 100vw;
+  -ms-grid-columns: (20vw)[11];
+      grid-template-columns: repeat(11, 20vw);
+  grid-gap: 1vw;
+}
+
+#menu > li {
+  width: 20vw;
+  text-align: center;
+  padding-top: 1vh;
+}
+
+#button {
+  width: 100vw;
+  height: 5vh;
+  background-color: #fff;
+}
+
+main {
+  width: 100vw;
+  height: 55vh;
+  background-color: #fff;
+  position: fixed;
+  top: 4.5vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main > section:nth-child(2) {
+  width: inherit;
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main > section:nth-child(2) > div:nth-child(2) {
+  width: 283px;
+  height: 355px;
+  position: absolute;
+  z-index: 0;
+}
+
+.head {
+  width: 283px;
+  height: 155px;
+  position: relative;
+  z-index: 2;
+  top: -10vh;
+  left: 0vw;
+}
+
+#submenu {
+  width: inherit;
+  height: 35vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 5, 1fr;
+      grid-template-rows: 5, 1fr;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+#submenu > div {
+  margin: 2vw;
+  background-color: #c4c4c4;
+  border-radius: 2vw;
+}
+/*# sourceMappingURL=style.css.map */
