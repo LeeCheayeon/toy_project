@@ -27,7 +27,9 @@
       <section></section> <!--앞뒤 버튼-->
       <section><!--이미지-->
       <!--이곳에 겹겹이 쌓이는 이미지-->
-      <!--미리 좌표를 지정해서 해당 공간에 생기도록 하는것이 좋지 않을까?? -->
+
+      <!--미리 좌표를 지정해서 해당 공간에 생기도록 하는것이 좋지 않을까?? 
+      Q. 이렇게 해도 괜찮을까요?? -->
         <div><!--장식2-->1</div>
         <div><!--장식1-->2</div>
         <div><!--눈썹-->3</div>
@@ -135,14 +137,16 @@
     // console.log(menus[0].dataset.name);
     // menus[0].dataset.size = "basic";
     // console.log(menus[0].getAttribute('data-size'));
-    // "basic" 을 arr를 하나 더 만들어서 하나씩 들어가게 반복문으로 처리하면 되지 않을까?  그럼 각자 하나씩 다른 이름의 dataset을 갖지 않을까??? 
+
+    //** 이부분이 menu에 들어가는 dataset 제어 부분입니다. ----------------
+    // ** "basic" 을 arr를 하나 더 만들어서 하나씩 들어가게 반복문으로 처리하면 되지 않을까? 그럼 각자 하나씩 다른 이름의 dataset을 갖지 않을까??
     let menusArr = ['basic', 'eyes', 'noseMouth','eyebrows', 'backHair','bangs','ears','clothes', 'deco1','deco2','backdeco'];
     for(let i =0; i<menus.length; i++){
       menus[i].setAttribute(`data-name`, menuArr[i]);
     }
     // createDataset(menu[i], li, menuArr[i]);
     // createDataset(menu,'li',menuArr[i]);
-    // console.log(menus[0].dataset.name)
+    // console.log(menus[0].dataset.name)--------------------------------
     
     // 메뉴 클릭 이벤트(3)
     // 다른 메뉴를 클릭하면 기존에 있던 div를 삭제하고 새로운 div 생성
@@ -157,27 +161,33 @@
           if(isstatus === true){
             //true일때
             createSubElement();
-            //새로 만든 함수에 dataset 추가 
+            console.log("true");
+            
+            //**새로 만든 함수에 dataset 추가 --------------------------
             const submenudiv = document.querySelector("#submenu>div");
             createDataset(submenudiv, getdataset);
-            console.log("true");
+            
             console.log(isstatus);
             isstatus=false;
           }
           else {
             //true가 아닐때
+            //** 기존 div를 삭제하고 > 새로운 div 생성 --------------------
             Deletediv();
             console.log("false")
             createSubElement();
+            
+            //** 새로 만든 함수에 dataset 추가 ----------------------------
             const submenudiv = document.querySelector("#submenu>div");
             createDataset(submenudiv, getdataset);
-            console.log('새로생성');
+
+            // console.log('새로생성');
           }
         }
       }
     });
 
-    // dataset 함수
+    // dataset 함수---------------------------------------------------
     function createDataset (pararentValue , ArrValue){
       pararentValue.setAttribute('data-name', ArrValue);
     }
