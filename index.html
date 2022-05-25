@@ -42,12 +42,12 @@
   //     target.style.backgroundColor = backgroundColor;
   // }
 
-    // const menu = document.getElementById("menu");
-    // console.log(menu);
-    // menu.style.listStyleType="none";
+    const menu = document.getElementById("menu");
+    console.log(menu);
+    menu.style.listStyleType="none";
 
-    // const submenu = document.getElementById("submenu");
-    // console.log(submenu);
+    const submenu = document.getElementById("submenu");
+    console.log(submenu);
 
     let menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
     // 메뉴 종류 생성
@@ -82,14 +82,18 @@
       reDiv.remove();
     }
 
-    menus[0].setAttribute('data-name', "basic");
+    // menus[0].setAttribute('data-name', "basic");
     // console.log(menus[0].dataset.name);
-    // menus[0].dataset.size = "basic";
-    // console.log(menus[0].getAttribute('data-size'));
     
     //** 이부분이 menu에 들어가는 dataset 제어 부분입니다. ----------------
     // ** "basic" 을 arr를 하나 더 만들어서 하나씩 들어가게 반복문으로 처리하면 되지 않을까? 그럼 각자 하나씩 다른 이름의 dataset을 갖지 않을까??
+
+    // Q. meun>li 에 dataset 값을 넣었는데 값이 나오지 않습니다. 
+    // meun>li의 길이값 =0  길이값 잡기 
     const menus = document.querySelectorAll("#menu>li");
+    console.log(menus);
+    console.log(menuArr.length);
+
     let menusArr = ['basic', 'eyes', 'noseMouth','eyebrows', 'backHair','bangs','ears','clothes', 'deco1','deco2','backdeco'];
     for(let i =0; i<menus.length; i++){
       menus[i].setAttribute('data-name', menusArr[i]);
@@ -142,7 +146,7 @@
       pararentValue.setAttribute('data-name', ArrValue);
     }
 
-    // Q. 자식이 하나일때 하나 이상일때를 작성을 하고싶은데 이렇게 작성하는게 맞는지 잘 모르겠습니다. '-`;;
+    // 자식이 하나일때 하나 이상일때를 작성을 하고싶은데 이렇게 작성하는게 맞는지 잘 모르겠습니다. '-`;;
     // function createDataset (pararentNode , tagname, ArrValue){
     //   // 만약 자식이 하나라면 
     //   if(pararentNode.children === 1){
@@ -159,7 +163,7 @@
     // }
 
 
-    // Q. 이제 여기에서 더 나아간다면 해당 파츠의 image 파일의 갯수만큼 box의 갯수를 늘리고(1)
+    //이제 여기에서 더 나아간다면 해당 파츠의 image 파일의 갯수만큼 box의 갯수를 늘리고(1)
     //박스하나에 해당 이미지를 순서대로 넣고 싶은데 가능한지 궁금합니다. 가능하다면 이것은 맨 마지막에 하는 것이 좋을까요? 
 
     // 아니면 박스 클릭시 메인에 상자가 나타나는 것을 먼저 만드는것이 좋을까요?? 
