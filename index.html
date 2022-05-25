@@ -42,12 +42,12 @@
   //     target.style.backgroundColor = backgroundColor;
   // }
 
-    const menu = document.getElementById("menu");
-    console.log(menu);
-    menu.style.listStyleType="none";
+    // const menu = document.getElementById("menu");
+    // console.log(menu);
+    // menu.style.listStyleType="none";
 
-    const submenu = document.getElementById("submenu");
-    console.log(submenu);
+    // const submenu = document.getElementById("submenu");
+    // console.log(submenu);
 
     let menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
     // 메뉴 종류 생성
@@ -82,17 +82,17 @@
       reDiv.remove();
     }
 
-    const menus = document.querySelectorAll("#menu>li");
-    // menus[0].setAttribute('data-name', "basic");
+    menus[0].setAttribute('data-name', "basic");
     // console.log(menus[0].dataset.name);
     // menus[0].dataset.size = "basic";
     // console.log(menus[0].getAttribute('data-size'));
-
+    
     //** 이부분이 menu에 들어가는 dataset 제어 부분입니다. ----------------
     // ** "basic" 을 arr를 하나 더 만들어서 하나씩 들어가게 반복문으로 처리하면 되지 않을까? 그럼 각자 하나씩 다른 이름의 dataset을 갖지 않을까??
+    const menus = document.querySelectorAll("#menu>li");
     let menusArr = ['basic', 'eyes', 'noseMouth','eyebrows', 'backHair','bangs','ears','clothes', 'deco1','deco2','backdeco'];
     for(let i =0; i<menus.length; i++){
-      menus[i].setAttribute(`data-name`, menuArr[i]);
+      menus[i].setAttribute('data-name', menusArr[i]);
     }
     // createDataset(menu[i], li, menuArr[i]);
     // createDataset(menu,'li',menuArr[i]);
@@ -100,42 +100,42 @@
     
     // 메뉴 클릭 이벤트(3)
     // 다른 메뉴를 클릭하면 기존에 있던 div를 삭제하고 새로운 div 생성
-    let isstatus = true;
-    menu.addEventListener("click",function(event){
-      let getdataset = event.target.dataset.name;
-      //변수 getdataset은 이벤트 타겟의 데이터셋의 네임이다. 
-      console.log(getdataset);
-      for(let i =0; i<menus.length; i++){
-        if(menus[i].dataset.name === getdataset){
-          // 가리키는 이름이 같다면 
-          if(isstatus === true){
-            //true일때
-            createSubElement();
-            console.log("true");
+    // let isstatus = true;
+    // menu.addEventListener("click",function(event){
+    //   let getdataset = event.target.dataset.name;
+    //   //변수 getdataset은 이벤트 타겟의 데이터셋의 네임이다. 
+    //   console.log(getdataset);
+    //   for(let i =0; i<menus.length; i++){
+    //     if(menus[i].dataset.name === getdataset){
+    //       // 가리키는 이름이 같다면 
+    //       if(isstatus === true){
+    //         //true일때
+    //         createSubElement();
+    //         console.log("true");
             
-            //**새로 만든 함수에 dataset 추가 --------------------------
-            const submenudiv = document.querySelector("#submenu>div");
-            createDataset(submenudiv, getdataset);
+    //         //**새로 만든 함수에 dataset 추가 --------------------------
+    //         const submenudiv = document.querySelector("#submenu>div");
+    //         createDataset(submenudiv, getdataset);
             
-            console.log(isstatus);
-            isstatus=false;
-          }
-          else {
-            //true가 아닐때
-            //** 기존 div를 삭제하고 > 새로운 div 생성 --------------------
-            Deletediv();
-            console.log("false")
-            createSubElement();
+    //         console.log(isstatus);
+    //         isstatus=false;
+    //       }
+    //       else {
+    //         //true가 아닐때
+    //         //** 기존 div를 삭제하고 > 새로운 div 생성 --------------------
+    //         Deletediv();
+    //         console.log("false")
+    //         createSubElement();
             
-            //** 새로 만든 함수에 dataset 추가 ----------------------------
-            const submenudiv = document.querySelector("#submenu>div");
-            createDataset(submenudiv, getdataset);
+    //         //** 새로 만든 함수에 dataset 추가 ----------------------------
+    //         const submenudiv = document.querySelector("#submenu>div");
+    //         createDataset(submenudiv, getdataset);
 
-            // console.log('새로생성');
-          }
-        }
-      }
-    });
+    //         // console.log('새로생성');
+    //       }
+    //     }
+    //   }
+    // });
 
     // dataset 함수---------------------------------------------------
     function createDataset (pararentValue , ArrValue){
