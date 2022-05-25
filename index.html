@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script type="module" src="./js/style.js" defer></script>
 </head>
 <body>
     <header>
@@ -35,11 +36,11 @@
     </main>
     
   <script>
-    function box (target, width, height,backgroundColor){
-      target.style.width = width;
-      target.style.height = height;
-      target.style.backgroundColor = backgroundColor;
-  }
+  //   function box (target, width, height,backgroundColor){
+  //     target.style.width = width;
+  //     target.style.height = height;
+  //     target.style.backgroundColor = backgroundColor;
+  // }
 
     const menu = document.getElementById("menu");
     console.log(menu);
@@ -51,29 +52,29 @@
     let menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
     // 메뉴 종류 생성
 
-    function createMenu (){
-      // 메뉴 생성 함수 
-      for(let i = 0; i<menuArr.length; i++){
-        //반복문
-        const newMenu = document.createElement("li");
-        const newMenuText = document.createTextNode(menuArr[i]);
-        newMenu.appendChild(newMenuText);
-        menu.appendChild(newMenu);
-      }
-    }
+    // function createMenu (){
+    //   // 메뉴 생성 함수 
+    //   for(let i = 0; i<menuArr.length; i++){
+    //     //반복문
+    //     const newMenu = document.createElement("li");
+    //     const newMenuText = document.createTextNode(menuArr[i]);
+    //     newMenu.appendChild(newMenuText);
+    //     menu.appendChild(newMenu);
+    //   }
+    // }
 
-    createMenu(); // 메뉴생성 함수 호출 
+    // createMenu(menu, menuArr); // 메뉴생성 함수 호출 
 
-    function createSubElement (){
-      const newElement = document.createElement("div");
-      const newClickBox = document.createElement("div"); 
-      box(newElement, '300px','300px','#c4c4c4');
-      box(newClickBox, '50px', '50px', "#ff6666");
+    // function createSubElement (){
+    //   const newElement = document.createElement("div");
+    //   const newClickBox = document.createElement("div"); 
+    //   box(newElement, '300px','300px','#c4c4c4');
+    //   box(newClickBox, '50px', '50px', "#ff6666");
 
-      newElement.appendChild(newClickBox);
-      submenu.appendChild(newElement);
-      newElement.id = "remove"
-    }
+    //   newElement.appendChild(newClickBox);
+    //   submenu.appendChild(newElement);
+    //   newElement.id = "remove"
+    // }
 
     // 생성된 newelement에 아이디를 부여 후 >  해당 아이디를 가진 div를 삭제 하는 방법을 사용해봤다. (2) <<삭제 함수>>
     function Deletediv(){
