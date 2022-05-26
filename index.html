@@ -42,65 +42,10 @@
   //     target.style.backgroundColor = backgroundColor;
   // }
 
-    const menu = document.getElementById("menu");
-    console.log(menu);
-    menu.style.listStyleType="none";
-
-    const submenu = document.getElementById("submenu");
-    console.log(submenu);
-
-    let menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
-    // 메뉴 종류 생성
-
-    // function createMenu (){
-    //   // 메뉴 생성 함수 
-    //   for(let i = 0; i<menuArr.length; i++){
-    //     //반복문
-    //     const newMenu = document.createElement("li");
-    //     const newMenuText = document.createTextNode(menuArr[i]);
-    //     newMenu.appendChild(newMenuText);
-    //     menu.appendChild(newMenu);
-    //   }
-    // }
-
-    // createMenu(menu, menuArr); // 메뉴생성 함수 호출 
-
-    // function createSubElement (){
-    //   const newElement = document.createElement("div");
-    //   const newClickBox = document.createElement("div"); 
-    //   box(newElement, '300px','300px','#c4c4c4');
-    //   box(newClickBox, '50px', '50px', "#ff6666");
-
-    //   newElement.appendChild(newClickBox);
-    //   submenu.appendChild(newElement);
-    //   newElement.id = "remove"
-    // }
-
-    // 생성된 newelement에 아이디를 부여 후 >  해당 아이디를 가진 div를 삭제 하는 방법을 사용해봤다. (2) <<삭제 함수>>
-    function Deletediv(){
-      const reDiv = document.getElementById("remove");
-      reDiv.remove();
-    }
-
     // menus[0].setAttribute('data-name', "basic");
     // console.log(menus[0].dataset.name);
     
-    //** 이부분이 menu에 들어가는 dataset 제어 부분입니다. ----------------
-    // ** "basic" 을 arr를 하나 더 만들어서 하나씩 들어가게 반복문으로 처리하면 되지 않을까? 그럼 각자 하나씩 다른 이름의 dataset을 갖지 않을까??
-
-    // Q. meun>li 에 dataset 값을 넣었는데 값이 나오지 않습니다. 
-    // meun>li의 길이값 =0  길이값 잡기 
-    const menus = document.querySelectorAll("#menu>li");
-    console.log(menus);
-    console.log(menuArr.length);
-
-    let menusArr = ['basic', 'eyes', 'noseMouth','eyebrows', 'backHair','bangs','ears','clothes', 'deco1','deco2','backdeco'];
-    for(let i =0; i<menus.length; i++){
-      menus[i].setAttribute('data-name', menusArr[i]);
-    }
-    // createDataset(menu[i], li, menuArr[i]);
-    // createDataset(menu,'li',menuArr[i]);
-    // console.log(menus[0].dataset.name)--------------------------------
+  //------------------------------
     
     // 메뉴 클릭 이벤트(3)
     // 다른 메뉴를 클릭하면 기존에 있던 div를 삭제하고 새로운 div 생성

@@ -10,3 +10,14 @@ export const createMenu = function createMenu(parentdiv, divArr){
 }
 
 createMenu(menu, menuArr); // 메뉴생성 함수 호출 
+
+//menu data-name="menusArr";
+//** 이부분이 menu에 들어가는 dataset 제어 부분입니다. 
+const menus = document.querySelectorAll("#menu>li");
+console.dir(menus);
+console.log(menus.length);
+
+let menusArr = ['basic', 'eyes', 'noseMouth','eyebrows', 'backHair','bangs','ears','clothes', 'deco1','deco2','backdeco'];
+for(let i =0; i<menus.length; i++){
+  menus[i].setAttribute('data-name', menusArr[i]);
+}
