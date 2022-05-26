@@ -30,7 +30,12 @@ function createSubElement (parentdiv){
 
       const menus = document.querySelectorAll("#menu>div");
       console.dir(menus);
-
+      
+      // 이미지 박스를 values()로 바꿨다.
+      // 이제 이미지박스어레이의 값을 menu에 1대1로 하나씩 넣어서 
+      // event.target을 클릭하면 해당하는 길이값에 맞게 clickbox를 생성하도록 하고 싶다.
+      // 예를 들어 menu의 2번째 메뉴를 클릭하면 > 이미지박스어레이의 2번째친구의 길이값인 2에 맞게 박스를 2개 생성해주는걸 하고싶은데
+      // 어떻게 해야할지 지금은 머리가 좀 아파서 잘 모르겠다...  
       let ImageBoxArr = Object.values(ImageBox);
       console.dir(ImageBoxArr);
       console.dir(ImageBoxArr[1].length);
@@ -64,6 +69,7 @@ function createDataset (pararentValue , ArrValue){
   pararentValue.setAttribute('data-name', ArrValue);
 }
 
+// 이부분은 회색박스 부분 clickbox의 부모 
 let isstatus = true;
 export const clickEvent =  menu.addEventListener("click", function(event){
   let getdataset = event.target.dataset.name;
@@ -91,10 +97,8 @@ export const clickEvent =  menu.addEventListener("click", function(event){
         }
       })
       
-      // 의사코드 
-      //1. clickBox.dataset.name 
 
-
+      // 이부분이 click box 부분 나눠봤다. 
       menu.addEventListener("click", function(evnet){
         let getdataset = evnet.target.dataset.name;
         const submenudiv = document.querySelector("#submenu>div");
