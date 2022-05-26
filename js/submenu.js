@@ -17,6 +17,13 @@ function createSubElement (parentdiv){
 
 // createSubElement (submenu);
 
+//remove 라는 id를 가진 아이를 삭제 
+function Deletediv(){
+  const reDiv = document.getElementById("remove");
+  // 변수 removediv는 문서의 아이디 중 "remove"를 가진 아이
+  reDiv.remove();
+}
+
 export const clickEvent =  menu.addEventListener("click", function(event){
   let isstatus = true;
   console.log(isstatus);
@@ -25,6 +32,9 @@ export const clickEvent =  menu.addEventListener("click", function(event){
   if(isstatus === true){
     console.log("true");
     createSubElement(submenu);
+  }else{
+    // isstatus === false;
+    Deletediv();
   }
   //   // menu.addEventListener("click",function(event){
   //     let getdataset = event.target.dataset.name;

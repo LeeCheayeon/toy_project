@@ -9,6 +9,8 @@ export const createMenu = function createMenu(parentdiv, divArr){
   }
 }
 
+let menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
+
 createMenu(menu, menuArr); // 메뉴생성 함수 호출 
 
 //menu data-name="menusArr";
