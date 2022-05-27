@@ -91,15 +91,17 @@ menu.addEventListener("click", function(event){
 
   // console.log(submenudiv);
   menu.addEventListener("click", (event) => {
+    // 메뉴를 클릭했을때 
     for(let i=0; i<menus.length; i++){
       if(menus.length === ImageBoxArr.length){
+        // 만약 메뉴자식들의 길이값과 이미지배열의 길이값이 같다면 
         console.log(menus[i]);
-        console.log(ImageBoxArr[i]);
-        
-        // const submenudiv = document.querySelector("#submenu>div")
-        // newClickBox(submenudiv);
+        console.log(ImageBoxArr[i].length);
+        const submenudiv = document.querySelector("#submenu>div")
+        newClickBox(submenudiv);
+        console.dir(submenudiv.children[0]);
+      }
     }
-  }
   });
   </script>
 </body>
