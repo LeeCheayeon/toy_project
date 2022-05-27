@@ -17,15 +17,15 @@ function createSubElement (parentdiv){
       const ImageBox = {
         basic : [1],
         eyes: [1,2],
-        noseMouth: [],
-        eyebrows: [], 
-        backHair: [],
-        bangs: [],
-        ears: [],
-        clothes: [],
-        deco1: [],
-        deco2: [],
-        backdeco: []
+        noseMouth: [1],
+        eyebrows: [1], 
+        backHair: [1],
+        bangs: [1],
+        ears: [1],
+        clothes: [1],
+        deco1: [1],
+        deco2: [1],
+        backdeco: [1]
       }
 
       const menus = document.querySelectorAll("#menu>div");
@@ -37,7 +37,7 @@ function createSubElement (parentdiv){
       // 예를 들어 menu의 2번째 메뉴를 클릭하면 > 이미지박스어레이의 2번째친구의 길이값인 2에 맞게 박스를 2개 생성해주는걸 하고싶은데
       // 어떻게 해야할지 지금은 머리가 좀 아파서 잘 모르겠다...  
       let ImageBoxArr = Object.values(ImageBox);
-      console.dir(ImageBoxArr);
+      console.log(ImageBoxArr);
       console.dir(ImageBoxArr[1].length);
       // for(let i=0; i<ImageBoxArr.length; i++){
       //   menus[i] = ImageBoxArr[i];
@@ -47,9 +47,9 @@ function createSubElement (parentdiv){
 //서브메뉴 클릭박스 생성
 // 1. 이미지 박스의 길이값만큼 박스를 만들어줘
 function newClickBox (pararentValue){
-      const newClickBox = document.createElement("div"); 
-      box(newClickBox, '50px', '50px', "#ff6666");
-      pararentValue.appendChild(newClickBox);
+  const newClickBox = document.createElement("div"); 
+  box(newClickBox, '50px', '50px', "#ff6666");
+  pararentValue.appendChild(newClickBox);
 }
 
 // 만약에 imagebox의 [i]dhk eventtargetdml i가 같다면? 

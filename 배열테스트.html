@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="menu"></ul>
+  <div id="submenu"></div>
+
+  <script>
+    function box (target, width, height,backgroundColor){
+      target.style.width = width;
+      target.style.height = height;
+      target.style.backgroundColor = backgroundColor;
+      }
+    
+    const menu = document.getElementById("menu");
+    const submenu = document.getElementById("submenu");
+
+    function createMenu(parentdiv, divArr){
+  // 메뉴 생성 함수 
+  for(let i = 0; i<divArr.length; i++){
+    //반복문
+    const newMenu = document.createElement("li");
+    const newMenuText = document.createTextNode(divArr[i]);
+    newMenu.appendChild(newMenuText);
+    parentdiv.appendChild(newMenu);
+  }
+}
+
+function createSubElement (parentdiv){
+  const newElement = document.createElement("div");
+  newElement.id = "remove"
+  box(newElement, '300px','300px','#c4c4c4');
+  parentdiv.appendChild(newElement);
+};
+
+function newClickBox (pararentValue){
+  const newClickBox = document.createElement("div"); 
+  box(newClickBox, '50px', '50px', "#ff6666");
+  pararentValue.appendChild(newClickBox);
+}
+
+let menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
+
+createMenu(menu, menuArr);
+
+const menus = document.querySelectorAll("#menu>li");
+console.dir(menus);
+console.log(menus.length);
+console.log(menus[0]);
+
+let isstatus = true;
+menu.addEventListener("click", function(event){
+  let getdataset = event.target.dataset.name;
+  if(isstatus === true){
+    createSubElement(submenu);
+      // const submenudiv = document.querySelector("#submenu>div");
+      // createDataset(submenudiv, getdataset);
+        // console.log(getdataset);
+        isstatus = false;
+      }else{
+      Deletediv(submenu);
+      console.log("false");
+      createSubElement(submenu);
+      // const submenudiv = document.querySelector("#submenu>div");
+      // createDataset(submenudiv, getdataset);
+    }
+  })
+
+  const ImageBox = {
+    basic : [1],
+    eyes: [1,2],
+    noseMouth: [1],
+    eyebrows: [1], 
+    backHair: [1],
+    bangs: [1],
+    ears: [1],
+    clothes: [1],
+    deco1: [1],
+    deco2: [1],
+    backdeco: [1]
+  }
+
+  let ImageBoxArr = Object.values(ImageBox);
+  console.log(ImageBoxArr);
+  console.log(ImageBoxArr.length);
+
+  // console.log(submenudiv);
+  menu.addEventListener("click", (event) => {
+    for(let i=0; i<menus.length; i++){
+      if(menus.length === ImageBoxArr.length){
+        console.log(menus[i]);
+        console.log(ImageBoxArr[i]);
+        
+        // const submenudiv = document.querySelector("#submenu>div")
+        // newClickBox(submenudiv);
+    }
+  }
+  });
+  </script>
+</body>
+</html>
