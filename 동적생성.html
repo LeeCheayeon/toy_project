@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const root = document.getElementById("root");
+
+    const menusArrData=["개울가의", "올챙이", "한마리", "꼬물꼬물", "헤엄치다"];
+    const ul = document.createElement('ul');
+    //element 생성 및 appending
+    ul.setAttribute('id','menu');
+    // 생성할 요소에 id attribute set
+    root.appendChild(ul);
+
+    menusArrData.forEach((value, index) => {
+      const li = document.createElement('li');
+      li.classList.add(`menus-${index}`);
+      li.textContent = value;
+      ul.appendChild(li);
+      console.log(li.classList);
+    });
+
+    //click
+    const menus = document.querySelectorAll("#menu>li");
+    console.log(menus[0]);
+    
+    const menu = document.querySelector("#menu");
+    console.log(menu);
+
+    // const subArrData = ["머리", "가슴", "배", "어깨"];
+    const subData = {
+    basic : [1],
+    eyes: [1,2],
+    noseMouth: [1],
+    eyebrows: [1], 
+    backHair: [1],
+    bangs: [1],
+    ears: [1],
+    clothes: [1],
+    deco1: [1],
+    deco2: [1],
+    backdeco: [1]
+  }
+
+  console.dir(subData);
+  let subDataArr = Object.values(subData);
+  console.log(subDataArr.length);
+  console.log(subDataArr[0].length);
+
+    menu.addEventListener("click", function(event) {
+      //클릭하면 아래내용을 실행
+      console.log("click");
+      const subdiv = document.createElement("div");
+      // subdiv.classList.add("submenu")
+      subdiv.setAttribute(`id`, 'submenu');
+      //subdiv 생성 id 부여
+      root.appendChild(subdiv);
+      // root>div (subdiv)
+      
+      // clickbox 생성
+      // menus[0]을 클릭하면
+      // clickbox를 생성하는데
+      // clickbox의 갯수는 subDataArr[i].length값만큼만 생성되게 제어
+
+      // 하단부분은 subDataArr.length값만큼(11개) 생성이 된다.
+      // subDataArr.forEach((value, index)=>{
+      //   const clickbox = document.createElement("div");
+      //   clickbox.setAttribute(`data-name`, index);
+      //   // clickbox setAttribute 지정
+      //   // 여기에서 index가 subdataArr[i].lenght값으로 들어가면 subdataArr[i].lenght값만큼 자식이 나올까??? 
+      //   subdiv.appendChild(clickbox);
+      //   // root>div>div(clickbox)
+      // });
+
+      for(let i =0; i<subDataArr.length; i++){
+        subDataArr[i].forEach((value,index) => {
+        const clickbox = document.createElement("div");
+        clickbox.setAttribute(`data-name`, index);
+        subdiv.appendChild(clickbox);
+          console.log(subDataArr[i]);
+        });
+      }
+    });
+
+    // function createbox(parentdiv, value, index) {
+    //   parentdiv.forEach(value,index);{
+
+    //     const clickbox = document.createElement("div");
+    //     clickbox.setAttribute(`data-name`, index);
+    //     subdiv.appendChild(clickbox);
+    //   }
+    // }
+    //Q. 아니면 이미지배열을 따로 하나하나씩 만들어서 연결을 해줘야하나?... 
+    // let eyes = [1,2,3];
+    // console.log(eyes);
+
+  </script>
+</body>
+</html>
