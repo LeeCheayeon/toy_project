@@ -18,13 +18,14 @@
     ul.setAttribute('id','menu');
     // 생성할 요소에 id attribute set
     root.appendChild(ul);
-
+    
     menusArrData.forEach((value, index) => {
       const li = document.createElement('li');
-      li.classList.add(`menus-${index}`);
+      // li.classList.add(`menus-${index}`);
+      li.setAttribute('data-menus', index);
       li.textContent = value;
       ul.appendChild(li);
-      console.log(li.classList);
+      // console.log(li.classList);
     });
 
     //click
@@ -59,7 +60,7 @@
       console.log("click");
       const subdiv = document.createElement("div");
       // subdiv.classList.add("submenu")
-      subdiv.setAttribute(`id`, 'submenu');
+      subdiv.setAttribute(`data-name`, 'submenu');
       //subdiv 생성 id 부여
       root.appendChild(subdiv);
       // root>div (subdiv)
@@ -78,15 +79,37 @@
       //   subdiv.appendChild(clickbox);
       //   // root>div>div(clickbox)
       // });
+      
+      // for(let i =0; i<subDataArr.length; i++){
+        // if(menus[i] === subDataArr[i]){
+          // subDataArr.forEach((value,index) => {
+            //   const clickbox = document.createElement("div");
+            //   clickbox.setAttribute(`data-menus`, index);
+            //   subdiv.appendChild(clickbox);
+            //   // console.log(subDataArr[i]);
+            
+            //   console.log(event.target.dataset);
+            //   console.log(clickbox.dataset);
+            // });
+            // }
+            // }
+            // });
 
-      for(let i =0; i<subDataArr.length; i++){
-        subDataArr[i].forEach((value,index) => {
+      subDataArr.forEach((value,index) => {
         const clickbox = document.createElement("div");
-        clickbox.setAttribute(`data-name`, index);
+        clickbox.setAttribute(`data-menus`, index);
         subdiv.appendChild(clickbox);
-          console.log(subDataArr[i]);
-        });
-      }
+        // console.log(subDataArr[i]);
+        
+        if(event.target.dataset === clickbox.dataset){
+          console.log("같다")
+        } else {
+          console.log("다르다")
+
+        }
+        console.log(event.target.dataset);
+        console.log(clickbox.dataset);
+      });
     });
 
     // function createbox(parentdiv, value, index) {
