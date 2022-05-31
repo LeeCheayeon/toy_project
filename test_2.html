@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1. 하고싶은 내용, 구조(부모자식간의 관계)를 적기
+    1. id = menu 라는 이름을 가진 전체 menu박스 (ul)
+    2. dataset menus라는 이름을 가진 menus (li)
+    3. id = submenu 라는 이름을 가진 submenu 전체 박스 (section)
+    4. dataset menus라는 이름을 가진 서브메뉴박스 (article)
+    5. 그안에 들어가는 clickbox ==> 배열의 값만큼 생성 되도록 (div)
+  -->
+
+  <!-- 2. 위의 내용을 가지고 마크업 먼저-->
+  <!-- <div id="root">
+    <ul id="menu">
+      <li data-menus="menus-1">menus-1</li>
+      <li data-menus="menus-11">menus-11</li>
+    </ul>
+    <section id="submenu">
+      <article data-menus="menus-1">submenu-1</article>
+      <article data-menus="menus-11">submenu-11</article>
+    </section>
+  </div> -->
+
+  <div id="root"></div>
+
+  <!-- 3. 마크업구조가 맞는지 확인 후 js-->
+  <script>
+    const root = document.getElementById("root");
+    const menus = document.querySelectorAll('#menu>li');
+    // const submenu = document.getElementById("submenu");
+    
+    const ul = document.createElement("ul");
+    ul.setAttribute("id", "menu")
+    root.appendChild(ul);
+    
+    // --------------------------------------------
+    const menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
+    
+    for(let i=0; i<menuArr.length; i++){
+      const li = document.createElement("li");
+      li.textContent=menuArr[i];
+      li.setAttribute("data-menus", menuArr[i]);
+      ul.appendChild(li);
+    }
+    // --------------------------------------------
+    
+    const submenu = document.createElement('section');
+    submenu.setAttribute("id", "submenu");
+    root.appendChild(submenu);
+    
+    // --------------------------------------------
+    
+    const menu = document.getElementById("menu");
+    console.log(menu);
+
+    for(let i =0; i<menuArr.length; i++){
+      const clickbox = document.createElement('article');
+      clickbox.setAttribute("data-menus", menuArr[i]);
+      clickbox.textContent=menuArr[i];
+      submenu.appendChild(clickbox);
+      clickbox.style.display="none";
+    }
+    // ---------------------------------------------
+
+    const submenus = submenu.children;
+    console.log(submenu);
+
+    //-------------------------------------------------
+
+    const subData = {
+      "기본": ["이미지-1","이미지-2"],
+      "눈": ["이미지-1","이미지-2","이미지-3"],
+      "코입": ["이미지-1","이미지-2","이미지-3"],
+      "눈썹": ["이미지-1","이미지-2"], 
+      "뒷머리": ["이미지-1","이미지-2"],
+      "앞머리": ["이미지-1","이미지-2","이미지-3"],
+      "귀": ["이미지-1","이미지-2"],
+      "의상": ["이미지-1","이미지-2","이미지-3"],
+      "장식1": ["이미지-1","이미지-2"],
+      "장식2": ["이미지-1","이미지-2","이미지-3"],
+      "뒷장식": ["이미지-1","이미지-2"]
+    }
+
+    const subDataArr = Object.values(subData);
+    console.log(subDataArr.length);
+
+    //-------------------------------------------------
+
+    menu.addEventListener("click", function(event){
+      console.log("click")
+      for(let i=0; i<submenus.length; i++){
+        // console.log(event.target.dataset.menus);
+        // console.log(submenus[i].dataset);
+        if(submenus[i].dataset.menus === event.target.dataset.menus){
+          console.log("같다")
+          submenus[i].style.display="block";
+          // let isstatus = true;
+          for(let j=0; j<subDataArr.length; j++){
+            const newdiv = document.createElement("div");
+            newdiv.innerHTML=subData[event.target.dataset.menus][j];
+            submenu.children[i].appendChild(newdiv);
+            // isstatus=false;
+            // console.log(subData[event.target.menus][j]);
+            // if(subData[event.target.menus][j])
+          }
+        }else{
+          console.log("다르다")
+          submenus[i].style.display="none";
+        }
+      }
+    });
+
+    //Q. innerHTML를 사용하면 undefined값이 화면에 보인다. 해당 값을 삭제하는 방법을 생각해야한다. 
+    //Q. 그리고 text가 아닌 박스(도형:네모)가 생성되도록해야한다. (gird 사용)
+    //Q. 그다음 해당 클릭박스를 누르면 main에 이미지가 보이도록 하는 작업도 실행 (생각해보기/검색)
+  </script>
+</body>
+</html>
