@@ -45,7 +45,7 @@ function createSubElement (parentdiv){
 
 
 //서브메뉴 클릭박스 생성
-// 1. 이미지 박스의 길이값만큼 박스를 만들어줘
+// 1. 이미지 박스의 길이값만큼 박스를 만들어줘-------------------------------
 function newClickBox (pararentValue){
   const newClickBox = document.createElement("div"); 
   box(newClickBox, '50px', '50px', "#ff6666");
@@ -57,14 +57,14 @@ function newClickBox (pararentValue){
 
 // createSubElement (submenu);
 
-//remove 라는 id를 가진 아이를 삭제 
+//remove 라는 id를 가진 아이를 삭제 -------------------------------------
 function Deletediv(){
   const reDiv = document.getElementById("remove");
   // 변수 removediv는 문서의 아이디 중 "remove"를 가진 아이
   reDiv.remove();
 }
 
-// data-name function
+// data-name function ------------------------------------------------
 function createDataset (pararentValue , ArrValue){
   pararentValue.setAttribute('data-name', ArrValue);
 }
@@ -73,22 +73,13 @@ function createDataset (pararentValue , ArrValue){
 let isstatus = true;
 export const clickEvent =  menu.addEventListener("click", function(event){
   let getdataset = event.target.dataset.name;
-  // console.log(getdataset);
   if(isstatus === true){
     createSubElement(submenu);
       const submenudiv = document.querySelector("#submenu>div");
       createDataset(submenudiv, getdataset);
-      // for(let index =0; index<ImageBoxArr[index].length; index++){
-        // if(ImageBoxArr[index] === event.target.length){
-          //     newElement.appendChild(newClickBox);
-          //   }
-          // }
-          // console.dir(submenudiv.dataset.name);
           console.log(getdataset);
           isstatus = false;
         }else{
-          // isstatus === false;
-          // console.dir(event.target.childElementCount);
           Deletediv(submenu);
           console.log("false");
           createSubElement(submenu);
