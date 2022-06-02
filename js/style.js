@@ -5,6 +5,6 @@ import { createMenu } from "./menu.js";
 
 import { clickEvent } from "./submenu.js";
 // console.log(createElement);
-
+import {imageMain} from "./submenu_main";
 
 
