@@ -93,7 +93,7 @@
     //-------------------------------------------------
     function Deletediv(){
       const deletediv = document.getElementById("delete");
-      // 변수 removediv는 문서의 아이디 중 "remove"를 가진 아이
+      // 변수 removediv는 문서의 아이디 중 "delete"를 가진 아이
       deletediv.remove();
     }
     //-------------------------------------------------
@@ -120,26 +120,8 @@
           if(isstatus === true){
             console.log(isstatus);
             for(let j=0; j<subDataArr.length; j++){
-              createnewdiv(submenu.children[i], subData[event.target.dataset.menus][j], 'id', 'deldte');
-              // 함수로 묶었는데 왜 자식이 하나만 생성이 되는걸까??? 
-              //ReferenceError: newdiv가 정의되지 않았습니다.
-              //ReferenceError: newdiv is not defined at HTMLUListElement.<anonymous>
-              // 원인 찾음 >> 하단의 if문 undefined의 지정할 곳이 newdiv 였는데 사라짐.
-              // const newdiv = document.createElement("div");
-              // newdiv.innerHTML=subData[event.target.dataset.menus][j];
-              // newdiv.setAttribute("id", "delete")
-              // submenu.children[i].appendChild(newdiv);
-
-              // const submenusChild = submenus[i].children;
-              // submenus[i]의 children 변수 지정
-              // console.log(submenusChild);
-              // if(submenu.children[i].children.innerHTML === 'undefined'){
-              //   submenu.children[i].children.style.display="none"
-              //   console.log("undefined 입니다.")
-              // } else {
-              //   console.dir(submenus[i].children.innerHTML);
-              //   console.log('undefined가 아닙니다.');
-              // }
+              createnewdiv(submenu.children[i], subData[event.target.dataset.menus][j], 'id', "delete");
+              //newdiv 생성 및 undefined display = none이 들어간 함수 
           }
           isstatus = false;
           console.log(isstatus);
@@ -150,9 +132,16 @@
             const submenuschild = document.querySelectorAll("#submenu>article>div");
             console.log(submenuschild);
             for(let i=0; i<submenuschild.length; i++){
-              // Deletediv(submenuschild);
+              Deletediv(submenuschild);
             }
-            isstatus = true;
+            // 기존에 있던 newdiv 삭제
+            // 다시 newdiv 생성
+            for(let j=0; j<subDataArr.length; j++){
+              createnewdiv(submenu.children[i], subData[event.target.dataset.menus][j], 'id', "delete");
+              //newdiv 생성 및 undefined display = none이 들어간 함수 
+          }
+            // isstatus = true;
+            // true로 돌아가면 3번 클릭시 중복생성이 되므로 돌아가지 않는다. 
           }
         }else{
           // console.log("다르다")
