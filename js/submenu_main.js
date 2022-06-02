@@ -15,5 +15,6 @@ const submenuschild = document.querySelectorAll("#submenu>article>div");
 console.log(submenuschild);
 
 export const imageMain = submenus.addEaddEventListener("click", function(event){
-  
+  console.log(event.target);
+
 });
