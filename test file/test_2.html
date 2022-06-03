@@ -110,10 +110,10 @@
     //-------------------------------------------------
 
     const subData = {
-      "기본": ["base_BASE.svg"],
+      "기본": ["base_기본.svg"],
       "눈": ["base_눈_1.svg","base_눈_2.svg"],
       "코입": ["base_코입.svg","이미지-2","이미지-3"],
-      "눈썹": ["base_눈썹.svg","이미지-2"], 
+      "눈썹": ["base_눈썹_1.svg","base_눈썹_2.svg"], 
       "뒷머리": ["base_뒷머리.svg","이미지-2"],
       "앞머리": ["base_앞머리.svg","이미지-2","이미지-3"],
       "귀": ["base_귀.svg","이미지-2"],
@@ -225,45 +225,57 @@
     for(let i =0; i<menuArr.length; i++){
       const imageContainer = document.createElement("article");
       imageContainer.setAttribute("data-menus" , menuArr[i]);
-      main.appendChild(imageContainer);
       imageContainer.style.display = "none";
       imageContainer.style.position = "absolute";
       imageContainer.style.zIndex = zindexArr[i];
       console.log(imageContainer.style.zIndex);
-      box (imageContainer, "500px", "500px", "#c4c4c4");
+      box (imageContainer, "500px", "500px");
+      main.appendChild(imageContainer);
+
     }
     // ====================================================
-    function createDiv(parentDiv) {
-      // const newdiv= document.createElement("div");
-      // box (newdiv, "50px", "50px", "#333");
-      // newdiv.setAttribute(classIdDataName, Name)
+    // function createDiv(parentDiv) {
+      //   // const newdiv= document.createElement("div");
+      //   // box (newdiv, "50px", "50px", "#333");
+      //   // newdiv.setAttribute(classIdDataName, Name)
       
-      const bgimage = document.createElement("img");
-      // bgimage 라는 변수 선정 = 새로운 img 요소 생성
-      bgimage.src = `./images/${event.target.innerHTML}`;
-      bgimage.setAttribute("id", "deleteimg");
-      // 이미지의 src = event.target.innerHTML이다. 
-      // html에서 작성한 것과 같은 맥락으로 작성
-      parentDiv.appendChild(bgimage);
+      //   // bgimage 라는 변수 선정 = 새로운 img 요소 생성
+      //   bgimage.setAttribute("id", "deleteimg");
+      //   // 이미지의 src = event.target.innerHTML이다. 
+      //   // html에서 작성한 것과 같은 맥락으로 작성
+      // }
+      
+      for(let i=0; i<menuArr.length; i++){
+        const bgimage = document.createElement("img");
+        bgimage.src = `./images/${event.target.innerHTML}`;
+        main.children[i].appendChild(bgimage);
+        
     }
+
 
     // ====================================================
     // submenu click event
 
     let count = true;
     submenu.addEventListener("click", function(event){
+      // 서브메뉴에 이벤트를 추가 (클릭할때)
       console.log("click")
       if(count === true){
+        //카운트가 진실이라면
         for(let i=0; i<submenus.length; i++){
+          // 변수 i=0; i가 서브메뉴들의 길이값보다 작다면 i++
           // console.log(submenu.children[i].dataset.menus);
           // console.dir(event.target.innerHTML);
           // console.log(main.children[i].dataset.menus);
         if(main.children[i].dataset.menus === event.target.dataset.menus){
+          // 만약 메인의자식들[i]번째의 데이터셋의 메뉴와 이벤트타겟의 데이터셋의 메뉴가 같으면
           main.children[i].style.display="block";
+          // 메인의 자식들의 i 번째의 디스플레이를 none(기존)>block으로 보여줘  
           createDiv(main.children[i]);
+          //그리고  메인의 자식들의 i번째에 자식(img)을 추가해줘
         }
         }
-        count = false;
+        // count = false;
       }else {
         //count = true가 아닐때
         // for(let i=0; i<submenus.length; i++){
