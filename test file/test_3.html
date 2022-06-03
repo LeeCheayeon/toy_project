@@ -48,9 +48,6 @@
   </div> -->
   
   <div id="root"></div>
-  <!-- <img src="./images/base_BASE.svg"> -->
-  
-  <!-- 3. 마크업구조가 맞는지 확인 후 js-->
   <script>
     
     function box(target,width,height,backgroundColor){
@@ -62,14 +59,7 @@
 
     const root = document.getElementById("root");
     const menus = document.querySelectorAll('#menu>li');
-    // const submenu = document.getElementById("submenu");
 
-    // function createElement(createDiv, createElement, parentDiv){
-    //   const createDiv = document.createElement(createElement);
-    //   //Q. 위의 const 다음에 오는 변수의 이름을 함수 createDiv로 바꿔서 사용할순없을까?? 
-    //   parentDiv.appendChild(createDiv);
-    // }
-    
     const ul = document.createElement("ul");
     ul.setAttribute("id", "menu")
     root.appendChild(ul);
@@ -231,15 +221,17 @@
       console.log(imageContainer.style.zIndex);
       box (imageContainer, "500px", "500px");
       main.appendChild(imageContainer);
-
-      const imagediv = document.createElement("img");
-      // const imageText = event.target.innerHTML;
-      // imagediv.src = `./images/${imageText}`;
+      
+      // const imagediv = document.createElement("img");
+      // imageContainer.appendChild(imagediv);
+      
+      const imagediv = document.createElement("div");
+      imagediv.setAttribute("data-menus", menuArr[i]);
       imageContainer.appendChild(imagediv);
     }
 
-    const mainsections = main.children;
-    console.log(mainsections.length);
+    const imageContainer = main.children;
+    console.log(imageContainer);
     // ====================================================
     // const imageText = document.querySelector("img")
     // console.log(imageText);
@@ -258,7 +250,6 @@
     //   for(let i=0; i<mainsections.length; i++){
     //     const bgimage = document.createElement("img");
     //     main.children[i].appendChild(bgimage);
-        
     // }
 
 
@@ -273,45 +264,30 @@
         //카운트가 진실이라면
         for(let i=0; i<submenus.length; i++){
           // 변수 i=0; i가 서브메뉴들의 길이값보다 작다면 i++
-          // console.log(submenu.children[i].dataset.menus);
-          // console.dir(event.target.innerHTML);
-          // console.log(main.children[i].dataset.menus);
-        if(main.children[i].dataset.menus === event.target.dataset.menus){
+          console.dir(imageContainer[i].dataset);
+          const img = imageContainer[i].children;
+          console.dir(img.dataset);
+        if(imageContainer[i].dataset.menus === event.target.dataset.menus){
           // 만약 메인의자식들[i]번째의 데이터셋의 메뉴와 이벤트타겟의 데이터셋의 메뉴가 같으면
-          // main.children[i].style.display="block";
-          // 메인의 자식들의 i 번째의 디스플레이를 none(기존)>block으로 보여줘  
+          console.log("같다");
+          // if(imageContainer[i].dataset.menus === imageContainer[i].children.dataset.menus){
+          // }
 
           // 1. 클릭한 서브메뉴의 데이터 셋과 같은 데이터셋을 가진 이미지섹션에 
           // 2. 있는 img 태그에  imageText.src = `./images/${event.target.innerHTML}`;
           // const imageText = main.children[i].children;
           // createtext(event.target.innerHTML);
           // console.dir(imageText);
-          const imageText = document.querySelector("img")
+          // const imageText = document.querySelector("img")
           // // imageText.outerText = event.target.innerHTML;
-          imageText.src = `./images/${event.target.innerHTML}`;
+          // imageText.src = `./images/${event.target.innerHTML}`;
           // console.log(imageText);
     
         }
         }
-        // count = false;
       }else {
-        //count = true가 아닐때
-        // for(let i=0; i<submenus.length; i++){
-        //   Deleteimg(main.children[i].children);
-        // //   if(main.children[i].dataset.menus === event.target.dataset.menus){
-        // //   main.children[i].style.display="block";
-        // //   createDiv(main.children[i]);
-        // // }
-        // count=true;
-        // console.log(count);
-        // }
       }
     });
-    // Q/ 이미지가 각 섹션마다 하나씩만 나오도록 만들기
-    // 만약 같은 서브메뉴 안에서 다른 박스를 클릭하면 그전 섹션은 삭제하고 > 새로 생성 하기
-
-    // 이미지는 나온다. >  이제 이미지 박스에 파일 이름을 걸어서 넣고 
-    // main page에 있는 section에 z-index를 순차적으로 넣어주기... position도 같이 넣는데 랠러티브면 될것같다. z-index 순차적으로 넣을 방법 생각하기 length는 지금 순서가 반대로 되어있다. >> zindex 넣었다. 
   </script>
 </body>
 </html>
