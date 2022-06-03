@@ -218,13 +218,18 @@
     root.appendChild(main);
     
     // ====================================================
-
+    let zindexArr =[2,7,8,9,1,4,5,3,6,10,0];
+    console.log(zindexArr);
+    // ====================================================
     // main>article 생성
     for(let i =0; i<menuArr.length; i++){
       const imageContainer = document.createElement("article");
       imageContainer.setAttribute("data-menus" , menuArr[i]);
       main.appendChild(imageContainer);
       imageContainer.style.display = "none";
+      imageContainer.style.position = "absolute";
+      imageContainer.style.zIndex = zindexArr[i];
+      console.log(imageContainer.style.zIndex);
       box (imageContainer, "500px", "500px", "#c4c4c4");
     }
     // ====================================================
@@ -261,21 +266,22 @@
         count = false;
       }else {
         //count = true가 아닐때
-        for(let i=0; i<submenus.length; i++){
-          Deleteimg(main.children[i].children);
-        //   if(main.children[i].dataset.menus === event.target.dataset.menus){
-        //   main.children[i].style.display="block";
-        //   createDiv(main.children[i]);
+        // for(let i=0; i<submenus.length; i++){
+        //   Deleteimg(main.children[i].children);
+        // //   if(main.children[i].dataset.menus === event.target.dataset.menus){
+        // //   main.children[i].style.display="block";
+        // //   createDiv(main.children[i]);
+        // // }
+        // count=true;
+        // console.log(count);
         // }
-        count=true;
-        console.log(count);
-        }
       }
     });
-    // 이미지가 각 섹션마다 하나씩만 나오도록 만들기 > 삭제하고 > 생성 하기
+    // Q/ 이미지가 각 섹션마다 하나씩만 나오도록 만들기
+    // 만약 같은 서브메뉴 안에서 다른 박스를 클릭하면 그전 섹션은 삭제하고 > 새로 생성 하기
 
     // 이미지는 나온다. >  이제 이미지 박스에 파일 이름을 걸어서 넣고 
-    // main page에 있는 section에 z-index를 순차적으로 넣어주기... position도 같이 넣는데 랠러티브면 될것같다. z-index 순차적으로 넣을 방법 생각하기 length는 지금 순서가 반대로 되어있다. 
+    // main page에 있는 section에 z-index를 순차적으로 넣어주기... position도 같이 넣는데 랠러티브면 될것같다. z-index 순차적으로 넣을 방법 생각하기 length는 지금 순서가 반대로 되어있다. >> zindex 넣었다. 
   </script>
 </body>
 </html>
