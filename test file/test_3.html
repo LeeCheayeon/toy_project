@@ -264,9 +264,10 @@
         //카운트가 진실이라면
         for(let i=0; i<submenus.length; i++){
           // 변수 i=0; i가 서브메뉴들의 길이값보다 작다면 i++
-          console.dir(main.children[i].dataset.menus);
-          console.dir(event.target.dataset.menus);
-          console.log(main.children[i].children.dataset);
+          console.dir(main.children[i].dataset);
+          console.dir(event.target.dataset);
+          console.dir(main.children[i].children.dataset);
+          console.dir(main.children[i].children);
           // main.children[i].children으로만 로그를 찍으면 데이터셋 값이 나오는데 main.children[i].children.dataset를 찍으면 undefined가 나온다. 이유가 뭘까?? 
 
         // if(main.children[i].dataset.menus === event.target.dataset.menus && event.target.dataset.menus === main.children[i].children.dataset.menus){
