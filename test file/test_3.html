@@ -88,9 +88,10 @@
       const clickContainer = document.createElement('article');
       clickContainer.setAttribute("data-menus", menuArr[i]);
       clickContainer.textContent=menuArr[i];
+      
       submenu.appendChild(clickContainer);
       clickContainer.style.display="none";
-      console.log(clickContainer);
+      // console.log(clickContainer);
     }
     // ---------------------------------------------
 
@@ -170,7 +171,7 @@
             console.log(isstatus);
             // 만약 isstatus !== true가 아니라면 
             const submenuschild = document.querySelectorAll("#submenu>article>div");
-            console.log(submenuschild);
+            // console.log(submenuschild);
             for(let i=0; i<submenuschild.length; i++){
               Deletediv(submenuschild);
             }
@@ -222,16 +223,15 @@
       box (imageContainer, "500px", "500px");
       main.appendChild(imageContainer);
       
-      // const imagediv = document.createElement("img");
-      // imageContainer.appendChild(imagediv);
-      
       const imagediv = document.createElement("div");
+      imageContainer.appendChild(imagediv);
+      // imagediv.setAttribute("id", "deleteimg");
+      
+      // const imagediv = document.createElement("div");
       imagediv.setAttribute("data-menus", menuArr[i]);
       imageContainer.appendChild(imagediv);
     }
 
-    const imageContainer = main.children;
-    console.log(imageContainer);
     // ====================================================
     // const imageText = document.querySelector("img")
     // console.log(imageText);
@@ -264,36 +264,48 @@
         //카운트가 진실이라면
         for(let i=0; i<submenus.length; i++){
           // 변수 i=0; i가 서브메뉴들의 길이값보다 작다면 i++
-          console.dir(imageContainer[i].dataset);
-          const img = imageContainer[i].children;
-          console.dir(img);
-          // 위에서 데이터셋에 값이 있었는데
-          console.dir(img.dataset);
-          // 여기에서는 값이 없다고 뜨는데 왜 그런걸까?? 원인을 잘 모르겠다. 
-        if(imageContainer[i].dataset.menus === event.target.dataset.menus){
-          // 만약 메인의자식들[i]번째의 데이터셋의 메뉴와 이벤트타겟의 데이터셋의 메뉴가 같으면
-          console.log("같다");
-          // if(imageContainer[i].dataset.menus === imageContainer[i].children.dataset.menus){
-            // 메인 섹션의 데이터값과 메인섹션의 자식의 데이터값이 같다면
-            // div의 텍스트콘텐츠를 이벤트타겟의 innerHTML로 바꿔줘
-            // 위의 로그값이 맞아야 주석처리를 한부분이 가능해진다. 
-          // }
+          console.dir(main.children[i].dataset.menus);
+          console.dir(event.target.dataset.menus);
+          console.log(main.children[i].children.dataset);
+          // main.children[i].children으로만 로그를 찍으면 데이터셋 값이 나오는데 main.children[i].children.dataset를 찍으면 undefined가 나온다. 이유가 뭘까?? 
 
-          // 1. 클릭한 서브메뉴의 데이터 셋과 같은 데이터셋을 가진 이미지섹션에 
-          // 2. 있는 img 태그에  imageText.src = `./images/${event.target.innerHTML}`;
-          // const imageText = main.children[i].children;
-          // createtext(event.target.innerHTML);
-          // console.dir(imageText);
-          // const imageText = document.querySelector("img")
-          // // imageText.outerText = event.target.innerHTML;
-          // imageText.src = `./images/${event.target.innerHTML}`;
-          // console.log(imageText);
-    
-        }
-        }
-      }else {
+
+        // if(main.children[i].dataset.menus === event.target.dataset.menus && event.target.dataset.menus === main.children[i].children.dataset.menus){
+          // 만약 메인의자식들[i]번째의 데이터셋의 메뉴와 이벤트타겟의 데이터셋의 메뉴와 img의 데이터 셋의 이름이 같으면
+        //   console.log("같다");
+          // const imgbox = document.getElementById("deleteimg")
+          // 이미지 박스는 아이디가 deleteimg인 태그
+          // const imgText = event.target.innerHTML;
+          // imgText의 값은 이벤트타겟의 데이터 메뉴스의 값
+          // imgbox.src = `./images/${imgText}`;
+          // main.children[i].appendChild(imgbox);
+          // 메인의 자식의 자식으로 
+        // }
+        // }
+        // count = false;
+      }
+    }else {
+        console.log("dd");
+        // for(let i=0; i<submenus.length; i++){
+        //   if(imageContainer[i].dataset.menus === event.target.dataset.menus){
+        //     Deleteimg(main.children[i]);
+
+        //     // const imgbox = document.createElement("img");
+        //     // // 이미지 박스를 만들어줘 
+        //     // const imgText = event.target.innerHTML;
+        //     // // imgText의 값은 이벤트타겟의 데이터 메뉴스의 값
+        //     // imgbox.src = `./images/${imgText}`;
+        //     // imgbox.setAttribute("id", "deleteimg");
+        //     // main.children[i].appendChild(imgbox);
+        //     // // 메인의 자식의 자식으로 
+        //   }
+        // }
+        // count =true;
       }
     });
+
+    // 1. 각 아티클안에 img를 하나씩 만들도록??
+
   </script>
 </body>
 </html>
