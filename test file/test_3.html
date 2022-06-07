@@ -88,7 +88,7 @@
       const clickContainer = document.createElement('article');
       clickContainer.setAttribute("data-menus", menuArr[i]);
       clickContainer.textContent=menuArr[i];
-      
+
       submenu.appendChild(clickContainer);
       clickContainer.style.display="none";
       // console.log(clickContainer);
@@ -269,11 +269,13 @@
           console.log(main.children[i].children.dataset);
           // main.children[i].children으로만 로그를 찍으면 데이터셋 값이 나오는데 main.children[i].children.dataset를 찍으면 undefined가 나온다. 이유가 뭘까?? 
 
-
         // if(main.children[i].dataset.menus === event.target.dataset.menus && event.target.dataset.menus === main.children[i].children.dataset.menus){
-          // 만약 메인의자식들[i]번째의 데이터셋의 메뉴와 이벤트타겟의 데이터셋의 메뉴와 img의 데이터 셋의 이름이 같으면
+          // 만약 메인의자식들[i]번째의 데이터셋의 메뉴와 이벤트타겟의 데이터셋의 메뉴와 main.children[i].children의 데이터 셋의 이름이 같으면
         //   console.log("같다");
-          // const imgbox = document.getElementById("deleteimg")
+        // 이미지 박스는 타켓의 데이터셋과 이름이 같은 div태그...??
+        // 위의 말을 const (변수) = (타겟의 데이터셋과 이름이 같은 데이터 셋을 가진 'div') 라고 지정이 가능할까?? 
+        // 이부분은 위의 if문이 해결되면 지정을 안해도 되는걸까?? 
+        // const imgbox = document.getElementById("deleteimg")
           // 이미지 박스는 아이디가 deleteimg인 태그
           // const imgText = event.target.innerHTML;
           // imgText의 값은 이벤트타겟의 데이터 메뉴스의 값
