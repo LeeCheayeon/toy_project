@@ -55,27 +55,31 @@
     for(let i=0; i<menuArr.length; i++){
       const li = document.createElement("li");
       li.textContent=menuArr[i];
-      li.setAttribute("data-menus", menuArr[i]);
-      ul.appendChild(li);
+      newtag(li,"data-menus", menuArr[i], ul);
+      // li.setAttribute("data-menus", menuArr[i]);
+      // ul.appendChild(li);
     }
     // --------------------------------------------
     
     const submenu = document.createElement('section');
-    submenu.setAttribute("id", "submenu");
-    root.appendChild(submenu);
+    // submenu.setAttribute("id", "submenu");
+    // root.appendChild(submenu);
+    newtag(submenu,"id", "submenu", root);
+    
     
     // --------------------------------------------
     
     const menu = document.getElementById("menu");
     console.log(menu);
-
+    
     for(let i =0; i<menuArr.length; i++){
       const clickContainer = document.createElement('article');
-      clickContainer.setAttribute("data-menus", menuArr[i]);
+      newtag(clickContainer,"data-menus", menuArr[i], submenu);
       clickContainer.textContent=menuArr[i];
-
-      submenu.appendChild(clickContainer);
       clickContainer.style.display="none";
+      
+      // clickContainer.setAttribute("data-menus", menuArr[i]);
+      // submenu.appendChild(clickContainer);
       // console.log(clickContainer);
     }
     // ---------------------------------------------
