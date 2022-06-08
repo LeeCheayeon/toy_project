@@ -118,6 +118,11 @@
       // 변수 removediv는 문서의 아이디 중 "deleteimg"를 가진 아이
       deletediv.remove();
     }
+
+    function deleteEle(idName){
+      const deleteEle = document.getElementById(idName);
+      deleteEle.remove();
+    }
     //-------------------------------------------------
     // newdiv 전용
     function createnewdiv(parentDiv, innerHTMLValue, classIdDataName, Name){
@@ -133,8 +138,6 @@
       }else {
         console.log("값이 있습니다.")
         box( newdiv,'10vw','10vw', '#333');
-        // newdiv.innerHTML = "";
-        //innerHTML 안의 내용을 없애줌 
       }
     }
     //-------------------------------------------------
