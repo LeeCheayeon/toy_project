@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
+  <!-- <style>
     *{padding: 0; margin: 0;}
     #submenu>article{
       /* width: 100vw;
@@ -24,29 +24,9 @@
     #submenu>article>div{
       display: flex;
     }
-  </style>
+  </style> -->
 </head>
 <body>
-  <!-- 1. 하고싶은 내용, 구조(부모자식간의 관계)를 적기
-    1. id = menu 라는 이름을 가진 전체 menu박스 (ul)
-    2. dataset menus라는 이름을 가진 menus (li)
-    3. id = submenu 라는 이름을 가진 submenu 전체 박스 (section)
-    4. dataset menus라는 이름을 가진 서브메뉴박스 (article)
-    5. 그안에 들어가는 clickbox ==> 배열의 값만큼 생성 되도록 (div)
-  -->
-
-  <!-- 2. 위의 내용을 가지고 마크업 먼저-->
-  <!-- <div id="root">
-    <ul id="menu">
-      <li data-menus="menus-1">menus-1</li>
-      <li data-menus="menus-11">menus-11</li>
-    </ul>
-    <section id="submenu">
-      <article data-menus="menus-1">submenu-1</article>
-      <article data-menus="menus-11">submenu-11</article>
-    </section>
-  </div> -->
-  
   <div id="root"></div>
   <script>
     
@@ -55,15 +35,20 @@
       target.style.height = height;
       target.style.backgroundColor = backgroundColor;
     }
+
+    function newtag (tagname, attributename, dataName, parentTag){
+      tagname.setAttribute(attributename, dataName)
+      parentTag.appendChild(tagname);
+    }
     // --------------------------------------------
 
     const root = document.getElementById("root");
     const menus = document.querySelectorAll('#menu>li');
 
     const ul = document.createElement("ul");
-    ul.setAttribute("id", "menu")
-    root.appendChild(ul);
-    
+    // ul.setAttribute("id", "menu")
+    // root.appendChild(ul);
+    newtag(ul,"id", "menu", root);
     // --------------------------------------------
     const menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
     
@@ -126,7 +111,7 @@
 
     function Deleteimg(){
       const deletediv = document.getElementById("deleteimg");
-      // 변수 removediv는 문서의 아이디 중 "delete"를 가진 아이
+      // 변수 removediv는 문서의 아이디 중 "deleteimg"를 가진 아이
       deletediv.remove();
     }
     //-------------------------------------------------
@@ -191,17 +176,6 @@
       }
     });
 
-    //Q. 그리고 text가 아닌 박스(도형:네모)가 생성되도록해야한다. (gird 사용)
-
-    //Q. 그다음 해당 클릭박스를 누르면 main에 이미지가 보이도록 하는 작업도 실행 (생각해보기/검색)
-
-    // 1. newdiv 를 클릭하면 main에 이미지가 보이도록해줘 or 새로운 요소를 생성해줘. 
-    // 2. newdiv 를 클릭하면 빨강 / 클릭 안 한것은 검정 (event.target)
-    // 3. main>section(11)>div(image)
-    // main이라는 요소는 id도 main (지정하는데 필요하다면 id 추가)
-    // section(11개) id 또는 dataset에 menuArr값처럼 넣기
-    // div 생성 : newdiv를 클릭하면 새로운 div 생성
-    // submenus에 클릭 이벤트 추가 > event.target(newdiv)를 클릭하면 색상변화 (추후 디자인)
     // ====================================================
     // main 생성
     const main = document.createElement("section");
@@ -216,10 +190,8 @@
     for(let i =0; i<menuArr.length; i++){
       const imageContainer = document.createElement("article");
       imageContainer.setAttribute("data-menus" , menuArr[i]);
-      // imageContainer.style.display = "none";
       imageContainer.style.position = "absolute";
       imageContainer.style.zIndex = zindexArr[i];
-      console.log(imageContainer.style.zIndex);
       box (imageContainer, "500px", "500px");
       main.appendChild(imageContainer);
       
