@@ -46,7 +46,19 @@
 
     const menuArr = Object.keys(subData);
     console.log(menuArr);
-// --------------------------------------------
+
+    const menuArrZ = Object.keys(subData);
+    menuArrZ.reverse();
+    let a =menuArrZ[1];
+    let b =menuArrZ[2];
+    let c =menuArrZ[6];
+    let d =menuArrZ[10];
+    menuArrZ.pop();
+    menuArrZ.splice(1,2,c,d);
+    menuArrZ.splice(6,1,b);
+    menuArrZ.push(a);
+    console.log(menuArrZ);
+    // --------------------------------------------
 //함수이름을 좀 더 직관적으로 알아볼수있게 작명
 function boxStyle(target,width,height,backgroundColor){
   target.style.width = width;
@@ -142,7 +154,7 @@ header.innerHTML =`
 
 main.innerHTML =`
 <div></div>
-<section id="imgBox">${createElement("data-menus", menuArr, menuArr.length, "article", "none", createElement("", "", 1, "img", "dd", "none"))}</section>
+<section id="imgBox">${createElement("data-menus", menuArrZ, menuArr.length, "article", "none", createElement("", "", 1, "img", "dd", "none"))}</section>
 `;
 // ===========================================================
 
@@ -191,11 +203,11 @@ for(let i=0; i<submenus.length; i++){
 }
 // 잘 나오는지 확인용 새로 함수로 줄여서 다시 작성해야함. 
 submenu.addEventListener("click",function(event){
-  console.log("clo")
+  // console.log("clo")
   for(let i=0; i<submenus.length; i++){
     for(let j=0; j<1; j++){
       if(event.target.dataset.menus === imgBox.children[i].dataset.menus){
-        console.log("dd")
+        // console.log("dd")
         const imgText = event.target.innerHTML;
         imgBox.children[i].children[j].src = `./images/${imgText}`;
       }
