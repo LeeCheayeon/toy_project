@@ -13,8 +13,13 @@
       <div>
       <nav>ul/li
     </header>
-    <main></main>
-    <footer></footer> -->
+    <main>
+      <section><화살표두개> div*2
+      <section id="ImgBox">*11 
+    </main>
+    <footer>
+      <p></p>
+    </footer> -->
     <script>
       // 1. 중복되는 부분을 함수로 묶어서 사용 if문을 사용하면 훨씬 더 유연해짐
       // 2. 배열메서드 사용하기 >> zindex 직접 지정하지 않고 
@@ -23,8 +28,8 @@
       
       // 5. menuArr와 subdata 겹치는 부분이 있다 하나만 사용 subdata의 앞에 것만 꺼낼수있는 작업 필요
       const subData = {
-        "기본": ["base_기본.svg"],
-        "눈": ["base_눈_1.svg","base_눈_2.svg"],
+      "기본": ["base_기본.svg"],
+      "눈": ["base_눈_1.svg","base_눈_2.svg"],
       "코입": ["base_코입.svg","이미지-2","이미지-3"],
       "눈썹": ["base_눈썹_1.svg","base_눈썹_2.svg"], 
       "뒷머리": ["base_뒷머리.svg","이미지-2"],
@@ -36,47 +41,38 @@
       "뒷장식": ["base_뒷장식.svg","이미지-2"]
     }
 
-    const menuArr = ["기본", "눈", "코입", "눈썹", "뒷머리", "앞머리" , "귀", "의상","장식1","장식2","뒷장식"];
-    
-    
-    
     const subDataArr = Object.values(subData);
-    // 객체를 배열로 바꿈
     console.log(subDataArr.length);
-    
-    
-    // const seletor = {
-    //   root : document.querySelector("#root"),
-    //   header :document.querySelector("#header"),
-    //   main :document.querySelector("#main"),
-    //   ul : document.querySelector("#menu"),
-    //   submenu : document.querySelector("#submenu")
-    // }
 
-    // console.log(seletor.root);
-    // console.log(seletor.body);
-    
-    
-    // --------------------------------------------
-      //함수이름을 좀 더 직관적으로 알아볼수있게 작명
-      function boxStyle(target,width,height,backgroundColor){
-        target.style.width = width;
-        target.style.height = height;
-        target.style.backgroundColor = backgroundColor;
-      }
-  
-      function createNewtag (tagname, attributename, dataName, parentTag){
-        tagname.setAttribute(attributename, dataName)
-        parentTag.appendChild(tagname);
-      }
-      // --------------------------------------------
-  
-      // const root = document.getElementById("root");
-      // const menus = document.querySelectorAll('#menu>li');
-  
-      // s// newtag(ul,"id", "menu", root);
+    const menuArr = Object.keys(subData);
+    console.log(menuArr);
+// --------------------------------------------
+//함수이름을 좀 더 직관적으로 알아볼수있게 작명
+function boxStyle(target,width,height,backgroundColor){
+  target.style.width = width;
+  target.style.height = height;
+  target.style.backgroundColor = backgroundColor;
+}
+function createDeletElem (tagName, innerHTMLValue, parentDiv, boxColor){
+  const elem =document.createElement(tagName);
+  elem.setAttribute("id", "delete")
+  elem.setAttribute("data-menus", event.target.dataset.menus )
+  elem.innerHTML = innerHTMLValue;
+  parentDiv.appendChild(elem);
+  if(elem.innerHTML === "undefined"){
+    elem.style.display = "none";
+  }else{
+    boxStyle(elem, "10vw", "10vw", boxColor)
+    //innerHTML 글씨 보여지는거 없애기... 
+  }
+}
 
-
+function deleteEle(idName,deletrValue){
+  for(let i=0; i<deletrValue; i++){
+    const deleteEle = document.getElementById(idName);
+    deleteEle.remove();
+  }
+}
 //========================================================
 // const headerMenu = (array) => {
 //   let menuList = [];
@@ -87,45 +83,41 @@
 //   menuList.push('<ul>');
 //   return menuList.join("");
 // }
-    
-//     //========================================================
-//   root.innerHTML = `
-//   <header id="header">${headerMenu(menuArr)}</header>
-//   `;
-  // console.log(typeof menuArr);
-  // root.innerHTML = `
-  // <ul id="menu"></ul>
-  // `;
-  
-  // ul.innerHTML = `
-  // ${loop(menuArr.length, 'li', "data-menus", menuArr, ul)}
-  // `;
-  
-  // ==========================================================
-  function createElement (dataName, dataSubName, count, tagName, idName){
-    // 매게변수의 타입체크
-    idName = typeof idName === "string" ? idName : console.error(`${idName} : not string`);
-    count = typeof count === "number" && Number.isNaN(count) !== true && Number.isInteger(count)
-  ? count : console.error(`${count} : not number`);
-  count = count >= 0 ? count : console.error(`${count} : 숫자의 값이 양수가 아니다.`);
-  tagName = typeof tagName === "string" ? tagName : console.error(`${tagName} : not string`);
-  // 배열
-  let eleArr =[]; 
-  let elementB = `<${tagName}>${idName}-${count}</${tagName}>`
-  //조건식
-  for(let i=0; i<count; i++){
-    if(typeof dataSubName === "object"){
-      // 데이터서브이름이 오브젝트일때
+
+// ==========================================================
+function createElement (dataName, dataSubName, count, tagName, idName,childValue){
+  // 매게변수의 타입체크
+  idName = typeof idName === "string" ? idName : console.error(`${idName} : not string`);
+  count = typeof count === "number" && Number.isNaN(count) !== true && Number.isInteger(count)
+? count : console.error(`${count} : not number`);
+count = count >= 0 ? count : console.error(`${count} : 숫자의 값이 양수가 아니다.`);
+tagName = typeof tagName === "string" ? tagName : console.error(`${tagName} : not string`);
+// 배열
+let eleArr =[]; 
+let elementB = `<${tagName}>${idName}-${count}</${tagName}>`
+//조건식
+for(let i=0; i<count; i++){
+  if(typeof dataSubName === "object"){
+    // 데이터서브이름이 오브젝트일때
+    if(tagName === "article"){
+      //태그이름이 아티클일때
+      elementB = `<${tagName} ${dataName}="${dataSubName[i]}">${childValue}</${tagName}>`
+      eleArr.push(elementB);
+    }else if(tagName === "img"){
+      elementB = `<${tagName} ${dataName}="${dataSubName[i]}"></${tagName}>`
+      eleArr.push(elementB);
+    }else{
+      //태그이름이 아티클이 아니라면
       elementB = `<${tagName} ${dataName}="${dataSubName[i]}">${dataSubName[i]}</${tagName}>`
       eleArr.push(elementB);
-    }else {
-      // 오브젝트가 아닐때
-      elementB = `<${tagName} ${dataName}="${dataSubName}">${dataSubName}</${tagName}>`
-      eleArr.push(elementB);
     }
-
+  }else {
+    // 오브젝트가 아닐때
+    elementB = `<${tagName} ${dataName}="${dataSubName}">${dataSubName}</${tagName}>`
+    eleArr.push(elementB);
   }
-  return eleArr.join("");
+}
+return eleArr.join("");
 }
 // ===========================================================
 const seletor = {
@@ -133,11 +125,9 @@ const seletor = {
   header :document.querySelector("#header"),
   main :document.querySelector("#main"),
   menu : document.getElementById("menu"),
-  submenu : document.querySelector("#submenu")
+  submenu : document.querySelector("#submenu"),
+  imgBox : document.getElementById("imgBox")
 }
-
-console.log(seletor.root);
-
 // ===========================================================
 root.innerHTML = `
 <header id="header"></header>
@@ -150,38 +140,67 @@ header.innerHTML =`
 <section id="submenu">${createElement("data-menus", menuArr, menuArr.length, "div", "none")}</section>
 `;
 
+main.innerHTML =`
+<div></div>
+<section id="imgBox">${createElement("data-menus", menuArr, menuArr.length, "article", "none", createElement("", "", 1, "img", "dd", "none"))}</section>
+`;
 // ===========================================================
-function loop(loopBase, targetName, display,datasetOne,value, datasetTwo){
-  for(let i=0; i<loopBase; i++){
-    targetName[i].style.display= display;
-    
-    if(datasetOne[i].dataset.menus === datasetTwo){
-      targetName[i].style.display= "block";
-      if(value === true){
-        console.log(value);
-        for(let j=0; j<loopBase; j++){
-          // createElement("data-menus", menuArr, menuArr.length, "div", "delete")
-        }
+
+function loopNeweElem (lengthValue, targetA, targetB, innerHTMLValue){
+  for(let i=0; i<lengthValue; i++ ){
+    if(targetA[i].dataset.menus === targetB.dataset.menus){
+      // 타겟A와 타겟B의 데이터의 값이 같으면 
+      console.log("same");
+      targetA[i].style.display="block";
+      for(let j=0; j<lengthValue; j++){
+        createDeletElem("div", innerHTMLValue[j], targetA[i], "#333");
       }
-      
+    }else{
+      // 데이터값이 같지 않으면 보여주지마
+      targetA[i].style.display = "none";
     }
   }
 }
 // ===========================================================
-console.log(submenu);
+const submenus = submenu.children
+console.log(submenus);
 
-// loop(menuArr.length, submenu.children, "none");
-//서브메뉴들의 display를 none으로 바꿔서 안보이게 만들었다.
+for(let i =0; i<menuArr.length; i++){
+  submenus[i].style.display = "none";
+}
 // ===========================================================
-
-console.log(seletor.menu);
-// const ul = document.getElementById("menu")
-
 let isStatus = true;
 menu.addEventListener("click", function(event){
-  loop(menuArr.length, submenu.children, "none", submenu.children , isStatus, event.target.dataset.menus);
-  // console.log(event.target.dataset.menus);
-  // console.log(submenu.children[i].dataset.menus);
+  if(isStatus === true){
+    console.log(isStatus);
+    loopNeweElem(menuArr.length, submenus, event.target, subData[event.target.dataset.menus] )
+    isStatus =false;
+  }else{
+    deleteEle("delete", submenus.length);
+    loopNeweElem(menuArr.length, submenus, event.target, subData[event.target.dataset.menus] )
+    console.log(isStatus);
+  }
+});
+// ===========================================================
+console.log(imgBox);
+// imgbox 스타일 넣기... 
+for(let i=0; i<submenus.length; i++){
+  imgBox.children[i].style.position="absolute";
+  boxStyle(imgBox.children[i], "500px", '500px');
+  //zindex를 어떻게 넣을지 생각... 
+}
+// 잘 나오는지 확인용 새로 함수로 줄여서 다시 작성해야함. 
+submenu.addEventListener("click",function(event){
+  console.log("clo")
+  for(let i=0; i<submenus.length; i++){
+    for(let j=0; j<1; j++){
+      if(event.target.dataset.menus === imgBox.children[i].dataset.menus){
+        console.log("dd")
+        const imgText = event.target.innerHTML;
+        imgBox.children[i].children[j].src = `./images/${imgText}`;
+      }
+    }
+  }
 });
 
 </script>
