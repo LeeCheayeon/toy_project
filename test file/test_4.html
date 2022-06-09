@@ -116,6 +116,7 @@ for(let i=0; i<count; i++){
       elementB = `<${tagName} ${dataName}="${dataSubName[i]}">${childValue}</${tagName}>`
       eleArr.push(elementB);
     }else if(tagName === "img"){
+      //태그이름이 img라면
       elementB = `<${tagName} ${dataName}="${dataSubName[i]}"></${tagName}>`
       eleArr.push(elementB);
     }else{
@@ -176,7 +177,7 @@ function loopNeweElem (lengthValue, targetA, targetB, innerHTMLValue){
 // ===========================================================
 const submenus = submenu.children
 console.log(submenus);
-
+// 어디에 넣어야하지...? 
 for(let i =0; i<menuArr.length; i++){
   submenus[i].style.display = "none";
 }
