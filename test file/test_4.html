@@ -195,26 +195,22 @@ menu.addEventListener("click", function(event){
 });
 // ===========================================================
 console.log(imgBox);
-// imgbox 스타일 넣기... 
+// imgbox 스타일 넣기...  이건 scss에서도 해도 되는 부분 
 for(let i=0; i<submenus.length; i++){
   imgBox.children[i].style.position="absolute";
   boxStyle(imgBox.children[i], "500px", '500px');
-  //zindex를 어떻게 넣을지 생각... 
 }
 // 잘 나오는지 확인용 새로 함수로 줄여서 다시 작성해야함. 
 submenu.addEventListener("click",function(event){
-  // console.log("clo")
   for(let i=0; i<submenus.length; i++){
     for(let j=0; j<1; j++){
       if(event.target.dataset.menus === imgBox.children[i].dataset.menus){
-        // console.log("dd")
         const imgText = event.target.innerHTML;
         imgBox.children[i].children[j].src = `./images/${imgText}`;
       }
     }
   }
 });
-
 </script>
 </body>
 </html>
