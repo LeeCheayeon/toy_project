@@ -12,13 +12,13 @@ export const subdata = {
   "뒷장식": ["base_뒷장식.svg","이미지-2"]
 }
 
-export const subDataArr = Object.values(subData);
-console.log(subDataArr.length);
+export const subDataArr = Object.values(subdata);
+// console.log(subDataArr.length);
 
-export const menuArr = Object.keys(subData);
-console.log(menuArr);
+export const menuArr = Object.keys(subdata);
+// console.log(menuArr);
 
-export const menuArrZ = Object.keys(subData);
+export const menuArrZ = Object.keys(subdata);
 menuArrZ.reverse();
 let a =menuArrZ[1];
 let b =menuArrZ[2];
@@ -28,6 +28,19 @@ menuArrZ.pop();
 menuArrZ.splice(1,2,c,d);
 menuArrZ.splice(6,1,b);
 menuArrZ.push(a);
-console.log(menuArrZ);
+// console.log(menuArrZ);
 
 // export const submenus = submenu.children;
+
+export const pageArr = ["one","two","three","four"];
+
+export const divData = {
+  "one" : ['logo'],
+  "two" : ['base','logo2','button','copy'],
+  "three" : ['base','main','menu','submenu'],
+  "four" : ['base','imgRe','button','copy']
+}
+
+console.dir(Object.values(divData["one"]));
+
+export const divArr = Object.values(divData);
