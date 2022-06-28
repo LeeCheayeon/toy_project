@@ -6,8 +6,7 @@ function pageMaker(arr,tagname,idname, tagnameT){
   arr.forEach((value,index) => {
     pageM += `
     <${tagname} id="${value}">
-    <a href="#${value}">${value}</a>
-    <${tagnameT} id="${value}"></${tagnameT}>
+    <${tagnameT}></${tagnameT}>
     </${tagname}>`;
   });
   

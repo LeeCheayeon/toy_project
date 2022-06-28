@@ -19,27 +19,19 @@ window.addEventListener("load",()=>{
   pages.forEach((value) => {
     boxStyle(value, '100vw', '100vh', "none")
     // console.dir(value.childNodes[0].innerHTML);
-    const pagesA = value.childNodes[0];
-    pagesA.innerHTML = "";
     if(value.id !== "one"){
       value.style.display = "none";
     }
-  });  
+    oneEvnet(pages[0]);
 
-  oneEvnet(pages[0]);
+  root.addEventListener("click", function(event){
+    console.log("clcik");
+    console.log(event.target.id);
+    if(event.target.id === "two"){
+      console.log(event.target.id);
+      pages[0].style.display = "none";
+    }
+  });
+});  
 
-  console.log(location.hash.substring(1));
-  root.addEventListener("hashchange", function(){
-    const hashData = location.hash.substring(1);
-    console.log(hashData);
-    pages.forEach((value)=>{
-      console.log(value.id);
-      let getid = value.id;
-      if(getid === hashData){
-        value.style.display = "block";
-      }else{
-        value.style.display = "none";
-      }
-    })
-  })
 });
